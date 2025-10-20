@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sabaragamuwa University of Sri Lanka</title>
+
+  <!-- Bootstrap CSS -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+  <link rel="icon" type="image/x-icon" href="images/Favicon.png" />
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      overflow-x: hidden;
+    }
+
+    section {
+      padding: 80px 0;
+      min-height: 100vh;
+    }
+
+    .navbar-brand {
+      font-weight: bolder;
+      font-size: 1.4rem;
+      font-family: "Lucida Sans", "Lucida Grande", Verdana, sans-serif;
+    }
+
+    /* Navbar background transition */
+    #mainNavbar {
+      background-color: rgba(13, 110, 253, 0.95) !important;
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease-in-out;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    #mainNavbar.scrolled {
+      background-color: rgba(13, 110, 253, 0.7) !important;
+      backdrop-filter: blur(6px);
+    }
+
+    /* Carousel images */
+    .carousel-item img {
+      object-fit: cover;
+      width: 100%;
+      height: 85vh;
+      border-radius: 10px;
+    }
+
+    /* Section headings */
+    h1 {
+      font-weight: bold;
+      margin-bottom: 30px;
+    }
+
+    /* Cards */
+    .card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: none;
+      border-radius: 15px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    footer {
+      background-color: #0d6efd;
+      color: white;
+    }
+  </style>
+</head>
+
+<body data-bs-spy="scroll" data-bs-target="#navbarNav" data-bs-offset="70">
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top py-3" id="mainNavbar">
+    <div class="container">
+      <a class="navbar-brand" href="#home">
+        <img
+          src="images/Favicon.png"
+          alt="University Logo"
+          width="30"
+          height="30"
+          class="d-inline-block align-text-top me-2"
+        />
+        Sabaragamuwa University of Sri Lanka Sports Hub
+      </a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNav"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link fw-bold text-white" href="#categories">Sports Categories</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link fw-bold text-white" href="#events">Sports Events</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link fw-bold text-white" href="#registration">Registration</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link fw-bold text-white" href="#help">Help</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Home Section -->
+  <section id="home" class="bg-light">
+    <div class="container-fluid px-0">
+      <div id="carouselExample" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="images/carrom.jpg" class="d-block w-100" alt="Home image 1" />
+          </div>
+          <div class="carousel-item">
+            <img src="images/Road Race.jpg" class="d-block w-100" alt="Home image 2" />
+          </div>
+          <div class="carousel-item">
+            <img src="images/swimming.jpg" class="d-block w-100" alt="Home image 3" />
+          </div>
+        </div>
+        <button
+          class="carousel-control-prev"
+          type="button"
+          data-bs-target="#carouselExample"
+          data-bs-slide="prev"
+        >
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#carouselExample"
+          data-bs-slide="next"
+        >
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sports Categories -->
+  <section id="categories">
+    <div class="container">
+      <h1>Sports Categories</h1>
+      <p class="mb-4">Explore the sports categories available at our university.</p>
+      <div class="row g-4">
+        <div class="col-md-3 col-sm-6">
+          <div class="card text-center p-3">
+            <h5 class="card-title mb-0">Football</h5>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+          <div class="card text-center p-3">
+            <h5 class="card-title mb-0">Basketball</h5>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+          <div class="card text-center p-3">
+            <h5 class="card-title mb-0">Tennis</h5>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+          <div class="card text-center p-3">
+            <h5 class="card-title mb-0">Swimming</h5>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+          <div class="card text-center p-3">
+            <h5 class="card-title mb-0">Cricket</h5>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+          <div class="card text-center p-3">
+            <h5 class="card-title mb-0">Table Tennis</h5>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+          <div class="card text-center p-3">
+            <h5 class="card-title mb-0">Taekwondo</h5>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+          <div class="card text-center p-3">
+            <h5 class="card-title mb-0">Athletics</h5>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+          <div class="card text-center p-3">
+            <h5 class="card-title mb-0">Baseball</h5>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+          <div class="card text-center p-3">
+            <h5 class="card-title mb-0">Carrom</h5>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+          <div class="card text-center p-3">
+            <h5 class="card-title mb-0">Chess</h5>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+          <div class="card text-center p-3">
+            <h5 class="card-title mb-0">Hockey</h5>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+          <div class="card text-center p-3">
+            <h5 class="card-title mb-0">Elle</h5>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+          <div class="card text-center p-3">
+            <h5 class="card-title mb-0">Karate</h5>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+          <div class="card text-center p-3">
+            <h5 class="card-title mb-0">Netball</h5>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+          <div class="card text-center p-3">
+            <h5 class="card-title mb-0">Road Race</h5>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+          <div class="card text-center p-3">
+            <h5 class="card-title mb-0">Rugby</h5>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+          <div class="card text-center p-3">
+            <h5 class="card-title mb-0">Volleyball</h5>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+          <div class="card text-center p-3">
+            <h5 class="card-title mb-0">Weight Lifting</h5>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+          <div class="card text-center p-3">
+            <h5 class="card-title mb-0">Wrestling</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sports Events -->
+  <section id="events" class="bg-light">
+    <div class="container">
+      <h1>Sports Events</h1>
+      <p>Check out events and register to participate.</p>
+      <div class="row g-4">
+        <div class="col-md-4 col-sm-6">
+          <div class="card text-center p-3">
+            <h5 class="card-title mb-0">Slug</h5>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-6">
+          <div class="card text-center p-3">
+            <h5 class="card-title mb-0">Inter-Faculty</h5>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-6">
+          <div class="card text-center p-3">
+            <h5 class="card-title mb-0">Inter-University</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Registration -->
+  <section id="registration">
+    <div class="container">
+      <h1>Registration</h1>
+      <p>Sign up for sports activities and events below.</p>
+      <form id="registrationForm" class="col-md-6 mx-auto">
+        <div class="mb-3">
+          <label for="name" class="form-label">Full Name</label>
+          <input type="text" class="form-control" id="name" required />
+        </div>
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" class="form-control" id="email" required />
+        </div>
+        <div class="mb-3">
+          <label for="uni-id" class="form-label">University ID / NIC</label>
+          <input type="text" class="form-control" id="uni-id" required />
+        </div>
+        <div class="mb-3">
+          <label for="sport" class="form-label">Preferred Sport</label>
+          <select class="form-select" id="sport" required>
+            <option value="" disabled selected>Choose a sport</option>
+            <option value="football">Football</option>
+            <option value="basketball">Basketball</option>
+            <option value="tennis">Tennis</option>
+            <option value="swimming">Swimming</option>
+            <option value="cricket">Cricket</option>
+            <option value="tabletennis">Table Tennis</option>
+            <option value="taekwondo">Taekwondo</option>
+            <option value="athletics">Athletics</option>
+            <option value="baseball">Baseball</option>
+            <option value="carrom">Carrom</option>
+            <option value="chess">Chess</option>
+            <option value="hockey">Hockey</option>
+            <option value="elle">Elle</option>
+            <option value="karate">Karate</option>
+            <option value="netball">Netball</option>
+            <option value="roadrace">Road Race</option>
+            <option value="rugby">Rugby</option>
+            <option value="volleyball">Volleyball</option>
+            <option value="weightlifting">Weight Lifting</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary w-100">Register</button>
+      </form>
+      <div id="message" class="mt-3 text-center"></div>
+    </div>
+  </section>
+
+  <!-- Help Section -->
+  <section id="help" class="bg-light">
+  <div class="container">
+    <h1>Help</h1>
+    <p>Get in touch or find the necessary contact information.</p>
+
+    <div class="row g-4 mt-4">
+      <!-- Contact Numbers Box -->
+      <div class="col-md-4">
+        <div class="card h-100 text-center p-3">
+          <h5 class="card-title">Contact Info</h5>
+          <div class="card-body">
+            <p class="mb-1">Department of Physical Education,
+Sabaragamuwa University of Sri Lanka,
+P.O. Box 02,
+Belihuloya,
+70140, Sri Lanka</p><br>
+            <p class="mb-1">+94-45-2280014 / +94-45-2280087</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sports Committee Box -->
+      <div class="col-md-4">
+        <div class="card h-100 text-center p-3">
+          <h5 class="card-title">Sports Committee</h5>
+          <div class="card-body">
+            <p class="mb-1">President: Mr. Lalith Rohana</p>
+            <p class="mb-1">Vice President: </p>
+            <p class="mb-1">Secretary: </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Emails Box -->
+      <div class="col-md-4">
+        <div class="card h-100 text-center p-3">
+          <h5 class="card-title">Emails</h5>
+          <div class="card-body">
+            <p class="mb-1">walrohana@yahoo.com</p>
+            <p class="mb-1">info@sportshub.com</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+  <!-- Footer -->
+  <footer class="text-center py-3">
+    <p class="mb-0">&copy; 2025 Group2. All rights reserved.</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Registration form
+    document.getElementById("registrationForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const unid = document.getElementById("uni-id").value.trim();
+      const sport = document.getElementById("sport").value;
+
+      const message = document.getElementById("message");
+      if (name && email && unid &&sport) {
+        message.innerHTML = '<div class="alert alert-success">Registration successful!</div>';
+        this.reset();
+      } else {
+        message.innerHTML = '<div class="alert alert-danger">Please fill in all fields.</div>';
+      }
+    });
+
+    // Navbar scroll effect
+    window.addEventListener("scroll", () => {
+      const navbar = document.getElementById("mainNavbar");
+      if (window.scrollY > 50) navbar.classList.add("scrolled");
+      else navbar.classList.remove("scrolled");
+    });
+  </script>
+</body>
+</html>
