@@ -1,0 +1,399 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sports Club - Sabaragamuwa University</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    /* Reset + base */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #ffffff; color: #222; }
+
+    /* Navbar */
+    .navbar {
+      background-color: #184b6a;
+      padding: 10px 0;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+      transition: background-color 0.3s ease, padding 0.2s ease;
+    }
+    .navbar-scrolled {
+      background-color: rgba(62,105,145,0.95) !important;
+      padding: 6px 0;
+    }
+    .navbar-brand { display:flex; align-items:center; color:#fff !important; font-weight:600; }
+    .logo-circle { width:50px; height:50px; background:#fff; border-radius:50%; display:flex; align-items:center; justify-content:center; margin-right:12px; }
+    .logo-circle img { width:34px; height:34px; object-fit:contain; }
+    .brand-text { display:flex; flex-direction:column; line-height:1.1; }
+    .brand-title { font-size:17px; font-weight:700; color:#fff; }
+    .brand-subtitle { font-size:13px; color:rgba(255,255,255,0.95); font-weight:400; }
+
+    .navbar-nav .nav-link { color: rgba(255,255,255,0.95) !important; margin: 0 10px; font-weight:500; font-size:15px; }
+    .navbar-nav .nav-link.btn-register, .navbar-nav .nav-link.btn-login { margin-left:8px; }
+    .btn-register, .btn-login {
+      padding: 8px 22px; border-radius:6px; font-weight:600; font-size:14px; transition:all .2s;
+    }
+    .btn-register { background:transparent; border:2px solid #dc3545; color:#dc3545 !important; }
+    .btn-register:hover { background:#dc3545; color:#fff !important; }
+    .btn-login { background:transparent; border:2px solid #fff; color:#fff !important; }
+    .btn-login:hover { background:#fff; color:#1e3a55 !important; }
+
+    /* Carousel */
+    .carousel-item { height: 600px; }
+    .carousel-item img { width:100%; height:100%; object-fit:cover; display:block; }
+    .carousel-caption { background: rgba(0,0,0,0.55); padding:18px; border-radius:10px; max-width:720px; margin:0 auto; }
+
+    /* Sections */
+    section { padding: 60px 0; }
+    section h1 { text-align:center; color:#1e3a55; margin-bottom:14px; font-weight:700; font-size:2.4rem; }
+    section p.lead { text-align:center; color:#666; margin-bottom:30px; font-size:1.05rem; }
+
+    /* About */
+    .about-content { max-width:920px; margin:0 auto; text-align:center; color:#444; }
+    .about-stats { display:flex; justify-content:space-around; gap:20px; margin-top:32px; flex-wrap:wrap; }
+    .stat-box { text-align:center; padding:16px; min-width:160px; }
+    .stat-number { font-size:2.6rem; font-weight:700; color:#1e3a55; }
+    .stat-label { margin-top:8px; color:#666; font-size:0.98rem; }
+
+    /* Categories */
+    #categories { background:#f8f9fa; }
+    #categories .card { border:2px solid #1e3a55; border-radius:10px; transition: all .25s; cursor:pointer; height:100%; display:flex; align-items:center; justify-content:center; padding:24px; }
+    #categories .card:hover { background:#1e3a55; color:#fff; transform:translateY(-6px); box-shadow:0 8px 24px rgba(0,0,0,0.12); }
+    #categories .card-title { color:#1e3a55; font-weight:600; }
+    #categories .card:hover .card-title { color:#fff; }
+
+    /* Events */
+    #events { background:#fff; }
+    .event-card { border:1px solid #ddd; border-radius:10px; padding:22px; margin-bottom:18px; transition:all .2s; }
+    .event-card:hover { transform:translateY(-4px); box-shadow:0 8px 20px rgba(0,0,0,0.06); }
+    .event-date { background:#1e3a55; color:#fff; padding:10px 16px; border-radius:6px; display:inline-block; font-weight:600; margin-bottom:12px; }
+    .event-title { color:#1e3a55; font-weight:700; margin-bottom:8px; font-size:1.25rem; }
+    .event-description { color:#555; line-height:1.6; }
+
+    /* Help/Contact */
+    #help { background:#f8f9fa; }
+    .help-card { background:#fff; border-radius:10px; padding:26px; text-align:center; transition:all .2s; height:100%; border:2px solid transparent; }
+    .help-card:hover { border-color:#1e3a55; box-shadow:0 8px 20px rgba(0,0,0,0.06); }
+    .help-icon { font-size:2.6rem; color:#1e3a55; margin-bottom:14px; }
+    .contact-info { background:#1e3a55; color:#fff; padding:28px; border-radius:10px; margin-top:22px; }
+
+    footer { background:#1e3a55; color:#fff; padding:26px 0; text-align:center; }
+
+    /* Responsive tweaks */
+    @media (max-width: 768px) {
+      .carousel-item { height: 320px; }
+      section h1 { font-size:1.9rem; }
+      .stat-number { font-size:2rem; }
+      .navbar-nav .nav-link { margin: 6px 0; }
+      .btn-register, .btn-login { margin:6px 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="#home" aria-label="Sabaragamuwa University Sports Club">
+        <div class="logo-circle" aria-hidden="true">
+          <!-- replace with real favicon/logo path -->
+          <img src="images/Favicon.png" alt="SUSL Logo" onerror="this.onerror=null;this.src='https://via.placeholder.com/34';">
+        </div>
+        <div class="brand-text">
+          <span class="brand-title">Sports Club</span>
+          <span class="brand-subtitle">Sabaragamuwa University Of Sri Lanka</span>
+        </div>
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+              aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav align-items-center">
+          <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#categories">Sports</a></li>
+          <li class="nav-item"><a class="nav-link" href="#events">Events</a></li>
+          <li class="nav-item"><a class="nav-link btn-register" href="#register" onclick="gotoRegister()">Register</a></li>
+          <li class="nav-item"><a class="nav-link btn-login" href="#login" onclick="gotoLogin()">Login</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Carousel -->
+  <div id="home" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#home" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#home" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#home" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+
+    <div class="carousel-inner">
+      <div class="carousel-item active" data-bs-interval="1000">
+        <img src="images3/imageee2.png" alt="Sports action" onerror="this.onerror=null;this.src='https://via.placeholder.com/1400x600';">
+        <div class="carousel-caption d-none d-md-block">
+          <h2>Welcome to SUSL Sports Club</h2>
+          <p>Excellence in Sports and Athletics</p>
+          <a class="btn btn-primary btn-lg" href="#categories">Get Started</a>
+        </div>
+      </div>
+
+      <div class="carousel-item" data-bs-interval="2000">
+        <img src="images3/oriimage.png" alt="Team sports" onerror="this.onerror=null;this.src='https://via.placeholder.com/1400x600';">
+        <div class="carousel-caption d-none d-md-block">
+          <h2>Join Our Teams</h2>
+          <p>Compete at the highest level</p>
+          <a class="btn btn-warning btn-lg" href="#" onclick="gotoBookings()">Bookings</a>
+        </div>
+      </div>
+
+      <div class="carousel-item" data-bs-interval="2000">
+        <img src="images3/download.png" alt="Training facilities" onerror="this.onerror=null;this.src='https://via.placeholder.com/1400x600';">
+        <div class="carousel-caption d-none d-md-block">
+          <h2>Professional Training</h2>
+          <p>World-class facilities and coaching</p>
+          <a class="btn btn-success btn-lg" href="#help">Learn More</a>
+        </div>
+      </div>
+    </div>
+
+    <button class="carousel-control-prev" type="button" data-bs-target="#home" data-bs-slide="prev" aria-label="Previous slide">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#home" data-bs-slide="next" aria-label="Next slide">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    </button>
+  </div>
+
+  <!-- About -->
+  <section id="about">
+    <div class="container">
+      <h1>About Us</h1>
+      <div class="about-content">
+        <p class="lead">The Sports Club of Sabaragamuwa University promotes fitness, sportsmanship and competitive excellence among students.</p>
+        <p style="color:#666; line-height:1.8;">
+          Established to nurture athletic talent and a healthy lifestyle, our club offers training programs and facilities to develop well-rounded athletes. Our coaches and facilities support students at all levels.
+        </p>
+
+        <div class="about-stats" role="list" aria-label="Statistics">
+          <div class="stat-box" role="listitem">
+            <div class="stat-number">20+</div>
+            <div class="stat-label">Sports Categories</div>
+          </div>
+          <div class="stat-box" role="listitem">
+            <div class="stat-number">500+</div>
+            <div class="stat-label">Active Athletes</div>
+          </div>
+          <div class="stat-box" role="listitem">
+            <div class="stat-number">15+</div>
+            <div class="stat-label">Championships Won</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Categories -->
+  <section id="categories">
+    <div class="container">
+      <h1>Sports Categories</h1>
+      <p class="lead">Explore the sports categories available at our university.</p>
+
+      <div class="row g-4">
+        <!-- repeatable card -->
+        <div class="col-6 col-md-3"><div class="card text-center p-3"><h5 class="card-title">Football</h5></div></div>
+        <div class="col-6 col-md-3"><div class="card text-center p-3"><h5 class="card-title">Basketball</h5></div></div>
+        <div class="col-6 col-md-3"><div class="card text-center p-3"><h5 class="card-title">Tennis</h5></div></div>
+        <div class="col-6 col-md-3"><div class="card text-center p-3"><h5 class="card-title">Swimming</h5></div></div>
+
+        <div class="col-6 col-md-3"><div class="card text-center p-3"><h5 class="card-title">Cricket</h5></div></div>
+        <div class="col-6 col-md-3"><div class="card text-center p-3"><h5 class="card-title">Table Tennis</h5></div></div>
+        <div class="col-6 col-md-3"><div class="card text-center p-3"><h5 class="card-title">Taekwondo</h5></div></div>
+        <div class="col-6 col-md-3"><div class="card text-center p-3"><h5 class="card-title">Athletics</h5></div></div>
+
+        <div class="col-6 col-md-3"><div class="card text-center p-3"><h5 class="card-title">Baseball</h5></div></div>
+        <div class="col-6 col-md-3"><div class="card text-center p-3"><h5 class="card-title">Carrom</h5></div></div>
+        <div class="col-6 col-md-3"><div class="card text-center p-3"><h5 class="card-title">Chess</h5></div></div>
+        <div class="col-6 col-md-3"><div class="card text-center p-3"><h5 class="card-title">Hockey</h5></div></div>
+
+        <div class="col-6 col-md-3"><div class="card text-center p-3"><h5 class="card-title">Elle</h5></div></div>
+        <div class="col-6 col-md-3"><div class="card text-center p-3"><h5 class="card-title">Karate</h5></div></div>
+        <div class="col-6 col-md-3"><div class="card text-center p-3"><h5 class="card-title">Netball</h5></div></div>
+        <div class="col-6 col-md-3"><div class="card text-center p-3"><h5 class="card-title">Road Race</h5></div></div>
+
+        <div class="col-6 col-md-3"><div class="card text-center p-3"><h5 class="card-title">Rugby</h5></div></div>
+        <div class="col-6 col-md-3"><div class="card text-center p-3"><h5 class="card-title">Volleyball</h5></div></div>
+        <div class="col-6 col-md-3"><div class="card text-center p-3"><h5 class="card-title">Weight Lifting</h5></div></div>
+        <div class="col-6 col-md-3"><div class="card text-center p-3"><h5 class="card-title">Wrestling</h5></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Events -->
+  <section id="events">
+    <div class="container">
+      <h1>Upcoming Events</h1>
+      <p class="lead">Stay updated with our latest sports events and competitions</p>
+
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="event-card" role="article">
+            <div class="event-date">December 15, 2025</div>
+            <h3 class="event-title">Inter-University Football Championship</h3>
+            <p class="event-description">
+              Join us for the biggest football tournament of the year! Teams from universities across the country will compete for the championship trophy. Don't miss the action-packed matches and show your support for our university team.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="event-card" role="article">
+            <div class="event-date">January 8, 2026</div>
+            <h3 class="event-title">Annual Athletics Meet</h3>
+            <p class="event-description">
+              Our flagship athletics event featuring track and field competitions, including sprints, jumps, throws and relays. All students are welcome to participate.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="event-card" role="article">
+            <div class="event-date">January 20, 2026</div>
+            <h3 class="event-title">Basketball 3x3 Tournament</h3>
+            <p class="event-description">
+              Fast-paced 3x3 basketball tournament open to all students. Form your team and register now! Exciting prizes await the winning teams.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="event-card" role="article">
+            <div class="event-date">February 5, 2026</div>
+            <h3 class="event-title">Swimming Gala</h3>
+            <p class="event-description">
+              Annual swimming competition featuring freestyle, backstroke, breaststroke, and butterfly. Open to beginners and experienced swimmers. Coaching sessions available.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Help -->
+  <section id="help">
+    <div class="container">
+      <h1>How Can We Help?</h1>
+      <p class="lead">Find answers to common questions and get the support you need</p>
+
+      <div class="row g-4 mb-4">
+        <div class="col-md-4">
+          <div class="help-card" onclick="gotoRegister()">
+            <div class="help-icon" aria-hidden="true">📝</div>
+            <h4 class="help-title">Registration</h4>
+            <p class="help-text">New to our sports club? Learn how to register and become a member. We'll guide you step-by-step.</p>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="help-card" onclick="gotoBookings()">
+            <div class="help-icon" aria-hidden="true">📅</div>
+            <h4 class="help-title">Facility Booking</h4>
+            <p class="help-text">Book courts, fields, or equipment. Our online system makes reservations easy and available 24/7.</p>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="help-card">
+            <div class="help-icon" aria-hidden="true">👥</div>
+            <h4 class="help-title">Coaching Services</h4>
+            <p class="help-text">Professional coaching for beginners and advanced athletes. Check schedules and fees in the office.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-info" role="region" aria-label="Contact Information">
+        <h4>Contact Information</h4>
+        <div class="row">
+          <div class="col-md-4"><p><strong>📧 Email:</strong></p><p>sportsclub@susl.ac.lk</p></div>
+          <div class="col-md-4"><p><strong>📞 Phone:</strong></p><p>+94 45 222 7000</p></div>
+          <div class="col-md-4"><p><strong>📍 Location:</strong></p><p>Sports Complex, SUSL Campus</p></div>
+        </div>
+        <p style="margin-top:18px;"><strong>Office Hours:</strong> Monday - Friday, 8:00 AM - 4:00 PM</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <h5>Sports Club - Sabaragamuwa University</h5>
+      <p>Building champions, one athlete at a time</p>
+      <p>&copy; 2025 Sabaragamuwa University of Sri Lanka. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Bootstrap Bundle JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Page JS -->
+  <script>
+    // Smooth scroll for internal nav links (only for same page anchors)
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        const targetSelector = this.getAttribute('href');
+        // allow external hashes like "#!" or similar to be ignored
+        if (!targetSelector || targetSelector === '#') return;
+        const target = document.querySelector(targetSelector);
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          // close responsive navbar after click (mobile)
+          const bsCollapse = document.querySelector('.navbar-collapse');
+          if (bsCollapse && bsCollapse.classList.contains('show')) {
+            const collapseInstance = bootstrap.Collapse.getInstance(bsCollapse);
+            if (collapseInstance) collapseInstance.hide();
+          }
+        }
+      });
+    });
+
+    // Navbar scrolled class: use scrollY for consistent behavior
+    const navbar = document.querySelector('.navbar');
+    function updateNavbarScrolled() {
+      if (window.scrollY > 10) navbar.classList.add('navbar-scrolled');
+      else navbar.classList.remove('navbar-scrolled');
+    }
+    window.addEventListener('scroll', updateNavbarScrolled, { passive: true });
+    document.addEventListener('DOMContentLoaded', updateNavbarScrolled);
+
+    // Improve carousel accessibility: pause on focus, resume on blur
+    const carouselEl = document.querySelector('#home.carousel');
+    if (carouselEl) {
+      carouselEl.addEventListener('focusin', () => {
+        const bs = bootstrap.Carousel.getInstance(carouselEl) || new bootstrap.Carousel(carouselEl);
+        bs.pause();
+      });
+      carouselEl.addEventListener('focusout', () => {
+        const bs = bootstrap.Carousel.getInstance(carouselEl) || new bootstrap.Carousel(carouselEl);
+        bs.cycle();
+      });
+    }
+
+    function gotoBookings() {
+      window.location.href = "Booking.html";
+    }
+    function gotoRegister() {
+      window.location.href = "Register.html";
+    }
+    function gotoLogin() {
+      window.location.href = "Login.html";
+    }
+  </script>
+</body>
+</html>
