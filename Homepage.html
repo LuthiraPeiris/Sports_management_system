@@ -66,12 +66,14 @@
     #categories .card:hover .card-title { color:#fff; }
 
     /* Events */
-    #events { background:#fff; }
-    .event-card { border:1px solid #ddd; border-radius:10px; padding:22px; margin-bottom:18px; transition:all .2s; }
-    .event-card:hover { transform:translateY(-4px); box-shadow:0 8px 20px rgba(0,0,0,0.06); }
-    .event-date { background:#1e3a55; color:#fff; padding:10px 16px; border-radius:6px; display:inline-block; font-weight:600; margin-bottom:12px; }
-    .event-title { color:#1e3a55; font-weight:700; margin-bottom:8px; font-size:1.25rem; }
-    .event-description { color:#555; line-height:1.6; }
+    #events { background:#f4f7ff; }
+    .event-card { border-radius: 15px; transition: transform 0.4s ease, box-shadow 0.4s ease; overflow: hidden; }
+    .event-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(13, 110, 253, 0.2);}
+    .event-card img { height: 220px; object-fit: cover; }
+    .event-info p { font-size: 0.9rem; margin: 0; }
+    #events .btn-primary { background-color: #0d95fd; border: none; font-weight: 600; border-radius: 10px; transition: background 0.4s ease; }
+    #events .btn-primary:hover { background-color: #0b52d7; }
+    .subtitle { color: #6c757d; font-size: 1.1rem;}
 
     /* Help/Contact */
     #help { background:#f8f9fa; }
@@ -238,49 +240,13 @@
   <!-- Events -->
   <section id="events">
     <div class="container">
-      <h1>Upcoming Events</h1>
-      <p class="lead">Stay updated with our latest sports events and competitions</p>
+      <div class="text-center my-5">
+        <h1 class="fw-bold text-primary display-5">Sport Events</h1>
+        <p class="subtitle">Join exciting competitions and represent your team</p>
+      </div>
 
-      <div class="row">
-        <div class="col-lg-6">
-          <div class="event-card" role="article">
-            <div class="event-date">December 15, 2025</div>
-            <h3 class="event-title">Inter-University Football Championship</h3>
-            <p class="event-description">
-              Join us for the biggest football tournament of the year! Teams from universities across the country will compete for the championship trophy. Don't miss the action-packed matches and show your support for our university team.
-            </p>
-          </div>
-        </div>
-
-        <div class="col-lg-6">
-          <div class="event-card" role="article">
-            <div class="event-date">January 8, 2026</div>
-            <h3 class="event-title">Annual Athletics Meet</h3>
-            <p class="event-description">
-              Our flagship athletics event featuring track and field competitions, including sprints, jumps, throws and relays. All students are welcome to participate.
-            </p>
-          </div>
-        </div>
-
-        <div class="col-lg-6">
-          <div class="event-card" role="article">
-            <div class="event-date">January 20, 2026</div>
-            <h3 class="event-title">Basketball 3x3 Tournament</h3>
-            <p class="event-description">
-              Fast-paced 3x3 basketball tournament open to all students. Form your team and register now! Exciting prizes await the winning teams.
-            </p>
-          </div>
-        </div>
-
-        <div class="col-lg-6">
-          <div class="event-card" role="article">
-            <div class="event-date">February 5, 2026</div>
-            <h3 class="event-title">Swimming Gala</h3>
-            <p class="event-description">
-              Annual swimming competition featuring freestyle, backstroke, breaststroke, and butterfly. Open to beginners and experienced swimmers. Coaching sessions available.
-            </p>
-          </div>
-        </div>
+      <div class="row g-4" id="events-container">
+      <!-- Dynamic cards will appear here -->
       </div>
     </div>
   </section>
@@ -384,6 +350,62 @@
         bs.cycle();
       });
     }
+
+    // Event data
+    const events = [
+      {
+        title: "Slug Competition",
+        description: "Annual slug race competition between university teams",
+        date: "November 15, 2025",
+        teams: "12 teams registered",
+        image: "Events-images/image 01.jpeg"
+      },
+      {
+        title: "Inter University Games",
+        description: "Multi-sport championship with universities nationwide",
+        date: "December 10 to 15, 2025",
+        teams: "25 teams registered",
+        image: "Events-images/image 02.jpeg"
+      },
+      {
+        title: "Inter Faculty Sports Meet",
+        description: "Annual sports meet between university faculties",
+        date: "January 20, 2026",
+        teams: "18 teams registered",
+        image: "Events-images/image 03.jpeg"
+      }
+    ];
+
+    const container = document.getElementById("events-container");
+
+    // Generate cards
+    events.forEach(event => {
+      const cardHTML = `
+        <div class="col-md-4">
+          <div class="card shadow event-card h-100">
+            <img src="${event.image}" class="card-img-top" alt="${event.title}">
+            <div class="card-body">
+              <h5 class="card-title text-dark fw-bold">${event.title}</h5>
+              <p class="card-text">${event.description}</p>
+              <div class="event-info mb-3">
+                <p class="mb-1"><i class="bi bi-calendar-event text-primary"></i> ${event.date}</p>
+                <p><i class="bi bi-people-fill text-primary"></i> ${event.teams}</p>
+              </div>
+              <a href="#" class="btn btn-primary w-100">🏆 View Event Details</a>
+            </div>
+          </div>
+        </div>
+      `;
+      container.insertAdjacentHTML("beforeend", cardHTML);
+    });
+
+    // Add button interaction
+    document.addEventListener("click", e => {
+      if (e.target.classList.contains("btn")) {
+        e.preventDefault();
+        alert("Event details coming soon!");
+      }
+    });
 
     function gotoBookings() {
       window.location.href = "Booking.html";
